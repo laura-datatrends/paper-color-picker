@@ -97,7 +97,8 @@ There are three different main configurations all 3 elements allow: `circle`, `s
 				 */
 				value: {
 					type: Object,
-					notify: true
+					notify: true,
+					observer: "_valueChanged"
 				},
 				valueAsHex: {
 					type: String,
@@ -226,6 +227,12 @@ There are three different main configurations all 3 elements allow: `circle`, `s
 				this.set('value.red', parseInt(result[1], 16));
 				this.set('value.green', parseInt(result[2], 16));
 				this.set('value.blue', parseInt(result[3], 16));
+			},
+			_valueChanged: function(newVal, oldVal) {
+				if(this._isValueDefined()) {
+					this.$.picker.set('immediateColor', this.value);
+					this.colorName = this.$.picker.immediateColorAsString;
+				}
 			}
 		});
 	</script>

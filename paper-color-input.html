@@ -78,12 +78,10 @@ There are three different main configurations all 3 elements allow: `circle`, `s
 				<div id="color" style$="{{_computeBackgroundColor(value.*)}}"></div>
 				<div id="noColor" hidden="{{_isValueDefined(value.*)}}"></div>
 			</div>
+			<template is="dom-if" if="[[errorMessage]]">
+				<paper-input-error>[[errorMessage]]</paper-input-error>
+			</template>
 		</paper-input-container>
-
-		<template is="dom-if" if="[[errorMessage]]">
-			<paper-input-error>[[errorMessage]]</paper-input-error>
-		</template>
-
 		<paper-color-picker id="picker" color="{{value}}" color-as-string="{{colorName}}" shape="{{shape}}" type="{{type}}" allow-alpha="{{allowAlpha}}" always-show-alpha="{{alwaysShowAlpha}}"></paper-color-picker>
 
 	</template>

@@ -66,7 +66,7 @@ There are three different main configurations all 3 elements allow: `circle`, `s
 				color: rgba(0,0,0,.3);
 			}
 		</style>
-		<paper-input-container id="input" always-float-label="{{_isValueDefined(value.*)}}">
+		<paper-input-container id="input" always-float-label="{{_isValueDefined(value.*)}}" invalid="[[invalid]]">
 			<label>{{label}}</label>
 			<div class="paper-input-input">
 				<span>{{colorName}}</span>&nbsp;<!--
@@ -79,6 +79,10 @@ There are three different main configurations all 3 elements allow: `circle`, `s
 				<div id="noColor" hidden="{{_isValueDefined(value.*)}}"></div>
 			</div>
 		</paper-input-container>
+
+		<template is="dom-if" if="[[errorMessage]]">
+			<paper-input-error>[[errorMessage]]</paper-input-error>
+		</template>
 
 		<paper-color-picker id="picker" color="{{value}}" color-as-string="{{colorName}}" shape="{{shape}}" type="{{type}}" allow-alpha="{{allowAlpha}}" always-show-alpha="{{alwaysShowAlpha}}"></paper-color-picker>
 
